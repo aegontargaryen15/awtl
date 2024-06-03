@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hostel Application Form</h2>
+        <form id="hostelForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span id="nameError" class="error"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span id="emailError" class="error"></span>
+
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin" required>
+            <span id="checkinError" class="error"></span>
+
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout" required>
+            <span id="checkoutError" class="error"></span>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required min="1">
+            <span id="guestsError" class="error"></span>
+
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" name="roomType" required>
+                <option value="">Select Room Type</option>
+                <option value="single">Single</option>
+                <option value="double">Double</option>
+                <option value="suite">Suite</option>
+            </select>
+            <span id="roomTypeError" class="error"></span>
+
+            <label for="mealPreference">Meal Preference:</label>
+            <select id="mealPreference" name="mealPreference" required>
+                <option value="">Select Meal Preference</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="non-vegetarian">Non-Vegetarian</option>
+            </select>
+            <span id="mealPreferenceError" class="error"></span>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+            <span id="commentsError" class="error"></span>
+
+            <label for="emergencyContact">Emergency Contact:</label>
+            <input type="tel" id="emergencyContact" name="emergencyContact" required pattern="[0-9]{10}">
+            <span id="emergencyContactError" class="error"></span>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div id="formDataDisplay" style="display: none;"></div> <!-- Displaying form data -->
+        <div id="successMessage" class="success" style="display: none;">Form submitted successfully!</div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var checkin = document.getElementById('checkin').value;
+            var checkout = document.getElementById('checkout').value;
+            var guests = document.getElementById('guests').value;
+            var roomType = document.getElementById('roomType').value;
+            var mealPreference = document.getElementById('mealPreference').value;
+            var comments = document.getElementById('comments').value;
+            var emergencyContact = document.getElementById('emergencyContact').value;
+
+            var nameRegex = /^[a-zA-Z\s]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            var valid = true;
+
+            document.querySelectorAll('.error').forEach(function (element) {
+                element.innerText = "";
+            });
+            document.getElementById('successMessage').style.display = "none";
+            document.getElementById('formDataDisplay').style.display = "none";
+
+            if (!nameRegex.test(name)) {
+                document.getElementById('nameError').innerText = "Please enter a valid name";
+                valid = false;
+            }
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').innerText = "Please enter a valid email";
+                valid = false;
+            }
+
+            if (new Date(checkin) >= new Date(checkout)) {
+                document.getElementById('checkinError').innerText = "Check-in date must be before check-out date";
+                valid = false;
+            }
+
+            if (guests <= 0) {
+                document.getElementById('guestsError').innerText = "Please enter a valid number of guests";
+                valid = false;
+            }
+
+            if (roomType === "") {
+                document.getElementById('roomTypeError').innerText = "Please select a room type";
+                valid = false;
+            }
+
+            if (mealPreference === "") {
+                document.getElementById('mealPreferenceError').innerText = "Please select a meal preference";
+                valid = false;
+            }
+
+            if (comments.trim() === "") {
+                document.getElementById('commentsError').innerText = "Please enter your comments";
+                valid = false;
+            }
+
+            if (!document.getElementById('emergencyContact').checkValidity()) {
+                document.getElementById('emergencyContactError').innerText = "Please enter a valid emergency contact number (10 digits)";
+                valid = false;
+            }
+
+            if (valid) {
+                displayFormData(name, email, checkin, checkout, guests, roomType, mealPreference, comments, emergencyContact);
+                document.getElementById('successMessage').style.display = "block";
+            }
+
+            return false; // Prevent form submission for this example
+        }
+
+        function displayFormData(name, email, checkin, checkout, guests, roomType, mealPreference, comments, emergencyContact) {
+            var formDataDisplay = document.getElementById('formDataDisplay');
+            formDataDisplay.innerHTML = `
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Check-in Date:</strong> ${checkin}</p>
+                <p><strong>Check-out Date:</strong> ${checkout}</p>
+                <p><strong>Number of Guests:</strong> ${guests}</p>
+                <p><strong>Room Type:</strong> ${roomType}</p>
+                <p><strong>Meal Preference:</strong> ${mealPreference}</p>
+                <p><strong>Comments:</strong> ${comments}</p>
+                <p><strong>Emergency Contact:</strong> ${emergencyContact}</p>
+            `;
+            formDataDisplay.style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Quiz Application</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz Application</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <label>
+                    <input type="radio" name="q1" value="Paris"> Paris
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="London"> London
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="Berlin"> Berlin
+                </label>
+            </div>
+
+            <div class="question">
+                <p>2. Which programming language is known for its use in web development?</p>
+                <label>
+                    <input type="radio" name="q2" value="Java"> Java
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="Python"> Python
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="JavaScript"> JavaScript
+                </label>
+            </div>
+
+            <div class="question">
+                <p>3. What is the capital of Japan?</p>
+                <label>
+                    <input type="radio" name="q3" value="Beijing"> Beijing
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="Tokyo"> Tokyo
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="Seoul"> Seoul
+                </label>
+            </div>
+
+      
+            <div class="question">
+                <p>4. Which is the largest planet in our solar system?</p>
+                <label>
+                    <input type="radio" name="q4" value="Mars"> Mars
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="Jupiter"> Jupiter
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="Saturn"> Saturn
+                </label>
+            </div>
+
+            <div class="question">
+                <p>5. What is the capital of Australia?</p>
+                <label>
+                    <input type="radio" name="q5" value="Sydney"> Sydney
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="Melbourne"> Melbourne
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="Canberra"> Canberra
+                </label>
+            </div>
+
+            <div class="question">
+                <p>6. Which gas is most abundant in Earth's atmosphere?</p>
+                <label>
+                    <input type="radio" name="q6" value="Oxygen"> Oxygen
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="Nitrogen"> Nitrogen
+                </label>
+                <label>
+                    <input type="radio" name="q6" value="Carbon Dioxide"> Carbon Dioxide
+                </label>
+            </div>
+
+            <div class="question">
+                <p>7. Who wrote the play 'Romeo and Juliet'?</p>
+                <label>
+                    <input type="radio" name="q7" value="Charles Dickens"> Charles Dickens
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="William Shakespeare"> William Shakespeare
+                </label>
+                <label>
+                    <input type="radio" name="q7" value="Jane Austen"> Jane Austen
+                </label>
+            </div>
+
+            <div class="question">
+                <p>8. What is the largest ocean on Earth?</p>
+                <label>
+                    <input type="radio" name="q8" value="Atlantic Ocean"> Atlantic Ocean
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="Indian Ocean"> Indian Ocean
+                </label>
+                <label>
+                    <input type="radio" name="q8" value="Pacific Ocean"> Pacific Ocean
+                </label>
+            </div>
+
+            <div class="question">
+                <p>9. Who is the current President of the United States?</p>
+                <label>
+                    <input type="radio" name="q9" value="Barack Obama"> Barack Obama
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="Joe Biden"> Joe Biden
+                </label>
+                <label>
+                    <input type="radio" name="q9" value="Donald Trump"> Donald Trump
+                </label>
+            </div>
+
+            <div class="question">
+                <p>10. What is the chemical symbol for gold?</p>
+                <label>
+                    <input type="radio" name="q10" value="Au"> Au
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="Ag"> Ag
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="Fe"> Fe
+                </label>
+            </div>
+
+            <button type="button" onclick="submitQuiz()">Submit</button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <h2>Your Results</h2>
+            <p id="correct-answers">Total Correct Answers: <span id="score">0</span></p>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

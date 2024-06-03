@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service Center</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+   <link rel="stylesheet" href="style.css">
+<script src="index.js"></script>
+</head>
+<body>
+
+
+ 
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#workshop">Workshop</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#services">Services</a>
+        <a href="#book">Book a Service</a>
+        <img class="logo" src="img/logo.png" alt="">
+        
+    </nav>
+
+    <section>
+        <p class="main">Welcome to Our Service Center</P>
+
+        <p>We provide high-quality car services to keep your vehicle in top condition. Check out our workshop and explore various car accessories.</p>
+
+        
+        <h3 id="workshop">Car Workshop</h3>
+        <img class="round" src="img/car-workshop-1.jpg" height="375px" width="597px" alt="Workshop 1">
+        <img class="round" src="img/car-workshop-2.jpg" height="375px" width="597px" alt="Workshop 2">
+
+        <h3 id="accessories">Car Accessories</h3>
+        <img class="round" src="img/car ass 1.jpg" height="375px" width="597px" alt="Accessory 1">
+        <img class="round" src="img/car ass 2.jpg" height="375px" width="597px" alt="Accessory 2">
+
+        <h3 id="services">Service Packages</h3>
+        <div class="package">
+          <h4>Basic Service</h4>
+          <p>Includes oil change, fluid top-up, and general inspection.</p>
+          <p>Price: ₹1000</p>
+      </div>
+
+      <div class="package">
+          <h4>Full Service</h4>
+          <p>Includes basic service plus tire rotation and brake inspection.</p>
+          <p>Price: ₹2500</p>
+      </div>
+
+      <div class="package">
+          <h4>Premium Service</h4>
+          <p>Includes full service plus engine diagnostics and air filter replacement.</p>
+          <p>Price: ₹5000 
+
+            <h3 id="book">Book a Service</h3>
+            <form id="serviceForm" >
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="phonenumber">Phone Number:</label>
+                <input type="text" id="ph" name="phonenumber">
+        
+                <label for="servicePackage">Select Service Package:</label>
+                <select id="servicePackage" name="servicePackage">
+                    <option value="">Select</option>
+                    <option value="basic">Basic Service</option>
+                    <option value="full">Full Service</option>
+                    <option value="premium">Premium Service</option>
+                </select>
+        
+                <button type="button" onclick="validateForm()">Book Now</button>
+            </form>
+    </section>
+
+   
+
+</body>
+</html>

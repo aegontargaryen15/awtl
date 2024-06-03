@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.main{
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  margin: 0;
+  text-align: center
+  
+}
+
+header {
+  background-color: #f32727;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+
+}
+
+nav {
+  background-color: #fff50073;
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover {
+  background-color: #f5b000;
+  color: white;
+  border-radius: 5px;
+}
+
+section {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #000000;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+img.logo{
+  float: inline-end;
+  padding-right: 20px;
+  height: 54px;
+}
+.round{
+ border-radius: 10px;
+}

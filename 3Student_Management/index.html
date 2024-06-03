@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Management System Form</h2>
+        <form id="studentForm" onsubmit="return validateForm()">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+            <span id="studentNameError" class="error"></span>
+
+            <label for="studentEmail">Student Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+            <span id="studentEmailError" class="error"></span>
+
+            <label for="studentDOB">Date of Birth:</label>
+            <input type="date" id="studentDOB" name="studentDOB" required>
+            <span id="studentDOBError" class="error"></span>
+
+            <label>Course:</label>
+            <select id="studentCourse" name="studentCourse" required>
+                <option value="">Select Course</option>
+                <option value="BCA">BCA</option>
+                <option value="BBA">BBA</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+                <option value="M.Tech">M.Tech</option>
+            </select>
+            <span id="studentCourseError" class="error"></span>
+
+            <label for="studentSemester">Semester:</label>
+<select id="studentSemester" name="studentSemester" required>
+    <option value="">Select Semester</option>
+    <option value="FY">FY (First Year)</option>
+    <option value="SY">SY (Second Year)</option>
+    <option value="TY">TY (Third Year)</option>
+    <option value="LY">LY (Final Year)</option>
+</select>
+<span id="studentSemesterError" class="error"></span>
+
+
+            <label for="studentAddress">Address:</label>
+            <textarea id="studentAddress" name="studentAddress" rows="4" required></textarea>
+            <span id="studentAddressError" class="error"></span>
+
+            <label for="studentContact">Contact Number:</label>
+            <input type="tel" id="studentContact" name="studentContact" required pattern="[0-9]{10}">
+            <span id="studentContactError" class="error"></span>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div id="formDataDisplay" style="display: none;"></div> <!-- Displaying form data -->
+        <div id="successMessage" class="success" style="display: none;">Form submitted successfully!</div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var studentName = document.getElementById('studentName').value.trim();
+            var studentEmail = document.getElementById('studentEmail').value.trim();
+            var studentDOB = document.getElementById('studentDOB').value;
+            var studentCourse = document.getElementById('studentCourse').value.trim();
+            var studentSemester = document.getElementById('studentSemester').value;
+            var studentAddress = document.getElementById('studentAddress').value.trim();
+            var studentContact = document.getElementById('studentContact').value;
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            var valid = true;
+
+            document.querySelectorAll('.error').forEach(function (element) {
+                element.innerText = "";
+            });
+            document.getElementById('successMessage').style.display = "none";
+            document.getElementById('formDataDisplay').style.display = "none";
+
+            if (!emailRegex.test(studentEmail)) {
+                document.getElementById('studentEmailError').innerText = "Please enter a valid email";
+                valid = false;
+            }
+
+            if (studentSemester <= 0) {
+                document.getElementById('studentSemesterError').innerText = "Please enter a valid semester";
+                valid = false;
+            }
+
+            if (!document.getElementById('studentContact').checkValidity()) {
+                document.getElementById('studentContactError').innerText = "Please enter a valid contact number (10 digits)";
+                valid = false;
+            }
+
+            if (valid) {
+                displayFormData(studentName, studentEmail, studentDOB, studentCourse, studentSemester, studentAddress, studentContact);
+                document.getElementById('successMessage').style.display = "block";
+            }
+
+            return false; // Prevent form submission for this example
+        }
+
+        function displayFormData(studentName, studentEmail, studentDOB, studentCourse, studentSemester, studentAddress, studentContact) {
+            var formDataDisplay = document.getElementById('formDataDisplay');
+            formDataDisplay.innerHTML = `
+                <p><strong>Student Name:</strong> ${studentName}</p>
+                <p><strong>Student Email:</strong> ${studentEmail}</p>
+                <p><strong>Date of Birth:</strong> ${studentDOB}</p>
+                <p><strong>Course:</strong> ${studentCourse}</p>
+                <p><strong>Semester:</strong> ${studentSemester}</p>
+                <p><strong>Address:</strong> ${studentAddress}</p>
+                <p><strong>Contact Number:</strong> ${studentContact}</p>
+            `;
+            formDataDisplay.style.display = "block";
+        }
+    </script>
+</body>
+</html>

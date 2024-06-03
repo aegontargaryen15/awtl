@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hospital Management Application Form</h2>
+        <form id="hospitalForm" onsubmit="return validateForm()">
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" required>
+            <span id="patientNameError" class="error"></span>
+
+            <label for="patientEmail">Patient Email:</label>
+            <input type="email" id="patientEmail" name="patientEmail" required>
+            <span id="patientEmailError" class="error"></span>
+
+            <label for="admissionDate">Admission Date:</label>
+            <input type="date" id="admissionDate" name="admissionDate" required>
+            <span id="admissionDateError" class="error"></span>
+
+            <label for="dischargeDate">Discharge Date:</label>
+            <input type="date" id="dischargeDate" name="dischargeDate" required>
+            <span id="dischargeDateError" class="error"></span>
+
+            
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor" required>
+                <option value="">Select Doctor</option>
+                <option value="Dr. Smith">Dr. Smith</option>
+                <option value="Dr. Johnson">Dr. Johnson</option>
+                <option value="Dr. Williams">Dr. Williams</option>
+            </select>
+            <span id="doctorError" class="error"></span>
+
+            <label for="wardType">Ward Type:</label>
+            <select id="wardType" name="wardType" required>
+                <option value="">Select Ward Type</option>
+                <option value="general">General</option>
+                <option value="private">Private</option>
+                <option value="ICU">ICU</option>
+            </select>
+            <span id="wardTypeError" class="error"></span>
+
+            <label for="roomNumber">Room Number:</label>
+            <input type="text" id="roomNumber" name="roomNumber" required>
+            <span id="roomNumberError" class="error"></span>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+            <span id="commentsError" class="error"></span>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div id="formDataDisplay" style="display: none;"></div> <!-- Displaying form data -->
+        <div id="successMessage" class="success" style="display: none;">Form submitted successfully!</div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var patientName = document.getElementById('patientName').value.trim();
+            var patientEmail = document.getElementById('patientEmail').value.trim();
+            var admissionDate = document.getElementById('admissionDate').value;
+            var dischargeDate = document.getElementById('dischargeDate').value;
+            var doctor = document.getElementById('doctor').value.trim();
+            var wardType = document.getElementById('wardType').value;
+            var roomNumber = document.getElementById('roomNumber').value.trim();
+            var comments = document.getElementById('comments').value;
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            var valid = true;
+
+            document.querySelectorAll('.error').forEach(function (element) {
+                element.innerText = "";
+            });
+            document.getElementById('successMessage').style.display = "none";
+            document.getElementById('formDataDisplay').style.display = "none";
+
+            if (!emailRegex.test(patientEmail)) {
+                document.getElementById('patientEmailError').innerText = "Please enter a valid email";
+                valid = false;
+            }
+
+            if (new Date(admissionDate) >= new Date(dischargeDate)) {
+                document.getElementById('admissionDateError').innerText = "Admission date must be before discharge date";
+                valid = false;
+            }
+
+            if (wardType === "") {
+                document.getElementById('wardTypeError').innerText = "Please select a ward type";
+                valid = false;
+            }
+
+            if (comments.trim() === "") {
+                document.getElementById('commentsError').innerText = "Please enter your comments";
+                valid = false;
+            }
+
+            if (valid) {
+                displayFormData(patientName, patientEmail, admissionDate, dischargeDate, doctor, wardType, roomNumber, comments);
+                document.getElementById('successMessage').style.display = "block";
+            }
+
+            return false; // Prevent form submission for this example
+        }
+
+        function displayFormData(patientName, patientEmail, admissionDate, dischargeDate, doctor, wardType, roomNumber, comments) {
+            var formDataDisplay = document.getElementById('formDataDisplay');
+            formDataDisplay.innerHTML = `
+                <p><strong>Patient Name:</strong> ${patientName}</p>
+                <p><strong>Patient Email:</strong> ${patientEmail}</p>
+                <p><strong>Admission Date:</strong> ${admissionDate}</p>
+                <p><strong>Discharge Date:</strong> ${dischargeDate}</p>
+                <p><strong>Attending Doctor:</strong> ${doctor}</p>
+                <p><strong>Ward Type:</strong> ${wardType}</p>
+                <p><strong>Room Number:</strong> ${roomNumber}</p>
+                <p><strong>Comments:</strong> ${comments}</p>
+            `;
+            formDataDisplay.style.display = "block";
+        }
+    </script>
+</body>
+</html>

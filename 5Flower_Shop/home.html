@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="validation.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>E-commerce Site</h1>
+</header>
+
+<section>
+    <h2>Our Products</h2>
+
+    <div class="product-container">
+        <div class="product-item">
+            <img src="" height="500px" width="450px" alt="Rose Bouquet">
+            <h3>Rose Bouquet</h3>
+            <p>A classic bouquet of red roses.</p>
+            <p> Price: ₹150</p>
+        </div>
+
+        <div class="flower-item">
+            <img src="img/lilly.jpg" height="500px" width="450px" alt="Lily Bouquet">
+            <h3>Lily Bouquet</h3>
+            <p>Fragrant lilies arranged beautifully.</p>
+            <p> Price: ₹250</p>
+        </div>
+
+        <div class="flower-item">
+            <img src="img/mixed.jpg" height="500px" width="450px" alt="Mixed Flower Bouquet">
+            <h3>Mixed Flower Bouquet</h3>
+            <p>A colorful mix of various flowers.</p>
+            <p> Price: ₹300</p>
+        </div>
+    </div>
+
+    <h2>Combo Offers</h2>
+<div class="flower-container">
+    <div class="flower-item">
+        <img src="img/combo1.jpg" height="500" width="450px" alt="Rose and Lily Combo">
+        <h3>Rose and Lily Combo</h3>
+        <p>Get a bundle of roses and lilies together.</p>
+        <p> Price: ₹500</p>
+    </div>
+
+    <div class="flower-item">
+        <img src="img/combo2.jpg" height="500" width="450px" alt="Luxury Bouquet Combo">
+        <h3>Luxury Bouquet Combo</h3>
+        <p>A combination of premium flowers for a special occasion.</p>
+        <p> Price: ₹1000</p>
+    </div>
+</div>
+    <h2>Order Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="bouquetType">Select Bouquet Type:</label>
+        <select id="bouquetType" name="bouquetType">
+            <option value="">Select</option>
+            <option value="rose">Rose Bouquet</option>
+            <option value="lily">Lily Bouquet</option>
+            <option value="mixed">Mixed Flower Bouquet</option>
+            <option value="rose-lily">Rose and Lily Combo</option>
+            <option value="luxury">Luxury Bouquet Combo</option>
+        </select>
+
+        <button type="submit">Place Order</button>
+    </form>
+</section>
+
+</body>
+</html>
