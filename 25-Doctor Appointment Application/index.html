@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Application Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+  <div class="container">
+    <h2>Doctor Appointment Application</h2>
+
+    <form name="appForm" ng-submit="submitForm()" novalidate>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" ng-model="formData.name" ng-pattern="/^[a-zA-Z]+$/"
+          required>
+        <div class="error" ng-show="appForm.name.$dirty && (appForm.name.$invalid || appForm.name.$error.pattern)">
+          <span ng-show="appForm.name.$error.required">Name is required.</span>
+          <span ng-show="appForm.name.$error.pattern">Name should contain only letters.</span>
+        </div>
+        
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" ng-model="formData.email" required>
+      <div class="error" ng-show="appForm.email.$dirty && appForm.email.$invalid">
+        <span ng-show="appForm.email.$error.required">Email is required.</span>
+        <span ng-show="appForm.email.$error.email">Invalid email address.</span>
+      </div>
+
+      <label for="age">Age:</label>
+<input type="number" id="age" name="age" ng-model="formData.age" ng-min="0" ng-max="99" required>
+<div class="error" ng-show="appForm.age.$dirty && (appForm.age.$invalid || appForm.age.$error.min || appForm.age.$error.max)">
+  <span ng-show="appForm.age.$error.required">Age is required.</span>
+  <span ng-show="appForm.age.$error.min || appForm.age.$error.max">Age must be between 0 and 99.</span>
+</div>
+
+
+<label for="gender">Gender:</label>
+<select id="gender" name="gender" ng-model="formData.gender" ng-required="!formData.gender">
+  <option value="">Select</option>
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
+<div class="error" ng-show="appForm.gender.$dirty && (appForm.gender.$invalid || appForm.gender.$error.required)">
+  <span ng-show="appForm.gender.$error.required">Gender is required. Please select at least one option.</span>
+</div>
+
+  <label for="bloodGroup">Blood Group:</label>
+  <select id="bloodGroup" name="bloodGroup" ng-model="formData.bloodGroup" ng-required="!formData.bloodGroup">
+    <option value="">Select</option>
+    <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+    <option value="O+">O+</option>
+    <option value="O-">O-</option>
+  </select>
+  <div class="error" ng-show="appForm.bloodGroup.$dirty && (appForm.bloodGroup.$invalid || appForm.bloodGroup.$error.required)">
+    <span ng-show="appForm.bloodGroup.$error.required">Blood Group is required. Please select one option.</span>
+  </div>
+
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" ng-model="formData.phone" pattern="[0-9]{10}" required>
+  <div class="error" ng-show="appForm.phone.$dirty && (appForm.phone.$invalid || appForm.phone.$error.pattern)">
+    <span ng-show="appForm.phone.$error.required">Phone number is required.</span>
+    <span ng-show="appForm.phone.$error.pattern">Invalid phone number. Please enter 10 digits.</span>
+  </div>
+
+  <label for="address">Address:</label>
+  <textarea id="address" name="address" ng-model="formData.address" required></textarea>
+  <div class="error" ng-show="appForm.address.$dirty && appForm.address.$error.required">
+    <span>Address is required.</span>
+  </div>
+
+  <label for="hasHealthInsurance">Do you have Health Insurance?</label>
+  <div>
+    <label>
+      <input type="radio" id="nothing" name="hasHealthInsurance" ng-model="formData.hasHealthInsurance" value="Yes" required> Yes
+
+ 
+      <input type="radio" id="nothing" name="hasHealthInsurance" ng-model="formData.hasHealthInsurance" value="No" required>No
+    </label>
+  </div>
+  <div class="error" ng-show="appForm.hasHealthInsurance.$dirty && appForm.hasHealthInsurance.$error.required">
+    <span>Please select whether you have Health Insurance.</span>
+  </div>
+
+  <input type="submit" id="submit" value="Submit">
+
+</form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.formData = {};
+
+      $scope.submitForm = function() {
+        if ($scope.appForm.$valid) {
+          // Perform form submission logic here
+          alert('Form submitted!');
+        } else {
+          // Form has errors
+          alert('Please fill in all required fields.');
+        }
+      };
+    });
+  </script>
+</body>
+</html>

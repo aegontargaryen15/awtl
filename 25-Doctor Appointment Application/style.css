@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image:url("img.jpg"); /* Replace with the URL of your background image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#name,#email,#age,#phone,#submit,select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: #ff0000;
+  margin-top: 5px;
+}
