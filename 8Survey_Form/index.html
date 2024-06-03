@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Survey</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="question">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="question">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="question">
+                <label for="rating">Rate your satisfaction:</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select</option>
+                    <option value="5">Excellent</option>
+                    <option value="4">Very Good</option>
+                    <option value="3">Good</option>
+                    <option value="2">Fair</option>
+                    <option value="1">Poor</option>
+                </select>
+            </div>
+            <div class="question">
+                <label>Would you recommend us to a friend?</label><br>
+                <input type="radio" id="recommendYes" name="recommend" value="Yes">
+                <label for="recommendYes">Yes</label>
+                <input type="radio" id="recommendNo" name="recommend" value="No">
+                <label for="recommendNo">No</label>
+            </div>
+            <div class="question">
+                <label>How likely are you to purchase again?</label><br>
+                <input type="radio" id="purchaseLikely" name="purchase" value="Likely">
+                <label for="purchaseLikely">Likely</label>
+                <input type="radio" id="purchaseMaybe" name="purchase" value="Maybe">
+                <label for="purchaseMaybe">Maybe</label>
+                <input type="radio" id="purchaseUnlikely" name="purchase" value="Unlikely">
+                <label for="purchaseUnlikely">Unlikely</label>
+            </div>
+            <div class="question">
+                <label>How satisfied are you with our customer service?</label><br>
+                <input type="radio" id="serviceSatisfied" name="service" value="Satisfied">
+                <label for="serviceSatisfied">Satisfied</label>
+                <input type="radio" id="serviceNeutral" name="service" value="Neutral">
+                <label for="serviceNeutral">Neutral</label>
+                <input type="radio" id="serviceDissatisfied" name="service" value="Dissatisfied">
+                <label for="serviceDissatisfied">Dissatisfied</label>
+            </div>
+            <div class="question">
+                <label>How likely are you to recommend our product?</label><br>
+                <input type="radio" id="recommendProductLikely" name="recommendProduct" value="Likely">
+                <label for="recommendProductLikely">Likely</label>
+                <input type="radio" id="recommendProductMaybe" name="recommendProduct" value="Maybe">
+                <label for="recommendProductMaybe">Maybe</label>
+                <input type="radio" id="recommendProductUnlikely" name="recommendProduct" value="Unlikely">
+                <label for="recommendProductUnlikely">Unlikely</label>
+            </div>            
+            <div class="question">
+                <label>Did you find our website easy to navigate?</label><br>
+                <input type="radio" id="navigateYes" name="navigate" value="Yes">
+                <label for="navigateYes">Yes</label>
+                <input type="radio" id="navigateNo" name="navigate" value="No">
+                <label for="navigateNo">No</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="thankYouMessage" class="hidden">Thank you for your feedback!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

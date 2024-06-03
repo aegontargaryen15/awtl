@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True or False Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>True or False Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. HTML stands for Hyper Text Markup Language.</p>
+                <label><input type="radio" name="q1" value="true"> True</label>
+                <label><input type="radio" name="q1" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>2. CO means Cobalt.</p>
+                <label><input type="radio" name="q2" value="true"> True</label>
+                <label><input type="radio" name="q2" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>3. SQL stands for Schematic Query Language.</p>
+                <label><input type="radio" name="q3" value="true"> True</label>
+                <label><input type="radio" name="q3" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>4. CSS is used to define the structure.</p>
+                <label><input type="radio" name="q4" value="true"> True</label>
+                <label><input type="radio" name="q4" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>5. JavaScript can only run in a web browser.</p>
+                <label><input type="radio" name="q5" value="true"> True</label>
+                <label><input type="radio" name="q5" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>6. Hitler was right.</p>
+                <label><input type="radio" name="q6" value="true"> True</label>
+                <label><input type="radio" name="q6" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>7. The French Revolution took place in the 18th century.</p>
+                <label><input type="radio" name="q7" value="true"> True</label>
+                <label><input type="radio" name="q7" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>8. JavaScript is a case-sensitive language.</p>
+                <label><input type="radio" name="q8" value="true"> True</label>
+                <label><input type="radio" name="q8" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>9. The Ocean is sweet.</p>
+                <label><input type="radio" name="q9" value="true"> True</label>
+                <label><input type="radio" name="q9" value="false"> False</label>
+            </div>
+            <div class="question">
+                <p>10. If A = B = C, then A = C .</p>
+                <label><input type="radio" name="q10" value="true"> True</label>
+                <label><input type="radio" name="q10" value="false"> False</label>
+            </div>
+            <button type="button" onclick="checkAnswers()">Submit</button>
+        </form>
+        <div id="result" class="hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="complaintApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Management Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="ComplaintController">
+    <header>
+        <h1>Complaint Management Application</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Complaints</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Submit a Complaint</h2>
+        <form name="complaintForm" ng-submit="submitComplaint()" novalidate>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" ng-model="complaint.name" ng-required="true">
+                <span ng-show="complaintForm.name.$touched && complaintForm.name.$invalid">Name is required.</span>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" ng-model="complaint.email" ng-required="true">
+                <span ng-show="complaintForm.email.$touched && complaintForm.email.$invalid">Valid email is required.</span>
+            </div>
+            <div>
+                <label for="type">Complaint Type</label>
+                <select id="type" name="type" ng-model="complaint.type" ng-required="true">
+                    <option value="">Select a type</option>
+                    <option value="service">Service</option>
+                    <option value="product">Product</option>
+                    <option value="other">Other</option>
+                </select>
+                <span ng-show="complaintForm.type.$touched && complaintForm.type.$invalid">Complaint type is required.</span
+                    ></span>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" ng-model="complaint.description" ng-required="true"></textarea>
+                    <span ng-show="complaintForm.description.$touched && complaintForm.description.$invalid">Description is required.</span>
+                </div>
+                <button type="submit" ng-disabled="complaintForm.$invalid">Submit</button>
+            </form>
+        </main>
+        <footer>
+            <p>&copy; 2024 Complaint Management Application</p>
+        </footer>
+    </body>
+    </html>
+    
